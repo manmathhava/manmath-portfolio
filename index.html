@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Manmath Shivkumar Hava | B.Tech CSE Student Portfolio</title>
+<meta name="description" content="Portfolio of Manmath Shivkumar Hava, a second-year B.Tech Computer Science and Engineering student at JSPM University, Pune, working with C, C++, Python and Java.">
+<meta name="theme-color" content="#07070c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Manmath Shivkumar Hava | Student Developer Portfolio">
+<meta property="og:description" content="Second-year B.Tech CSE student at JSPM University, Pune. Skills: C, C++, Python, Java.">
+<style>
+/* ========== 1. THEME TOKENS (edit colours here) ========== */
+:root{
+  color-scheme:dark;
+  --bg:#07070c; --surface:#0f0f18; --surface-2:#151522;
+  --text:#ecebf5; --muted:#a3a2b8; --line:rgba(255,255,255,.09);
+  --purple:#8b5cf6; --blue:#3b82f6; --cyan:#22d3ee;
+  --grad:linear-gradient(120deg,var(--purple),var(--blue) 55%,var(--cyan));
+  --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Cascadia Code",Consolas,Menlo,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:84px;height:100%}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.65;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{line-height:1.15;margin:0}
+p{margin:0}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:6rem 0;position:relative}
+.eyebrow{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.8rem}
+.title{font-size:clamp(2rem,4.5vw,3rem);font-weight:750;letter-spacing:-.02em;margin-bottom:2.5rem}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:.5rem 1rem;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+
+/* ========== 2. BACKGROUND (orbs + particles) ========== */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:drift 22s ease-in-out infinite alternate}
+.orb.a{width:520px;height:520px;background:var(--purple);top:-120px;left:-120px}
+.orb.b{width:460px;height:460px;background:var(--blue);bottom:-140px;right:-100px;animation-delay:-8s}
+.orb.c{width:300px;height:300px;background:var(--cyan);top:45%;left:55%;opacity:.12;animation-delay:-14s}
+@keyframes drift{to{transform:translate(70px,50px) scale(1.12)}}
+#particles{position:absolute;inset:0;width:100%;height:100%}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;left:0;top:0;z-index:-1;pointer-events:none;opacity:0;
+  background:radial-gradient(circle,rgba(139,92,246,.16),transparent 65%);transition:opacity .4s}
+
+/* ========== 3. NAVIGATION ========== */
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);
+  background:rgba(7,7,12,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;letter-spacing:.06em;text-decoration:none;font-size:1.2rem}
+.menu{display:flex;gap:.3rem;list-style:none;margin:0;padding:0}
+.menu a{display:block;padding:.5rem .9rem;border-radius:999px;text-decoration:none;color:var(--muted);font-size:.95rem;transition:color .25s,background .25s}
+.menu a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.menu a.active{color:var(--text);background:rgba(139,92,246,.18);box-shadow:inset 0 0 0 1px rgba(139,92,246,.4)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:20px;height:2px;background:currentColor;margin:5px auto;transition:transform .3s,opacity .3s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ========== 4. BUTTONS & CARDS ========== */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;font:inherit;font-weight:600;transition:transform .25s,box-shadow .25s,background .25s}
+.btn.primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px -8px rgba(99,102,241,.7)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px -8px rgba(99,102,241,.9)}
+.btn.ghost{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--text)}
+.btn.ghost:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.07)}
+.card{position:relative;background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);border-radius:20px;padding:1.8rem;transition:transform .35s,border-color .35s,box-shadow .35s}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--grad);opacity:0;transition:opacity .35s;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(99,102,241,.55)}
+.card:hover::before{opacity:1}
+
+/* ========== 5. HERO ========== */
+#home{min-height:100vh;display:flex;align-items:center;padding-top:7rem}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.badge{display:inline-flex;gap:.5rem;align-items:center;font-size:.85rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.4rem;background:rgba(255,255,255,.03)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;letter-spacing:-.03em}
+.headline{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--cyan);margin:1rem 0 1.2rem;font-weight:500}
+.lead{color:var(--muted);max-width:52ch;font-size:1.08rem}
+.cta{display:flex;flex-wrap:wrap;gap:.9rem;margin:2rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem}
+.chip{font-family:var(--mono);font-size:.85rem;padding:.35rem .8rem;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.code-win{background:rgba(15,15,24,.85);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px -30px rgba(99,102,241,.6);animation:float 7s ease-in-out infinite;overflow:hidden}
+.code-win .bar{display:flex;gap:7px;padding:.8rem 1rem;border-bottom:1px solid var(--line)}
+.code-win .bar i{width:11px;height:11px;border-radius:50%;background:#3a3a4d}
+.code-win pre{margin:0;padding:1.3rem 1.4rem;font-family:var(--mono);font-size:.9rem;line-height:1.8;overflow-x:auto}
+.k{color:#c4a7ff}.s{color:#7dd3fc}.f{color:#5eead4}.c{color:#6b6b85}
+@keyframes float{50%{transform:translateY(-14px)}}
+.scroll{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);width:26px;height:42px;border:2px solid var(--line);border-radius:14px;text-decoration:none}
+.scroll::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--cyan);animation:wheel 1.8s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(14px)}}
+
+/* ========== 6. ABOUT / EDUCATION / SKILLS ========== */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem}
+.about p{color:var(--muted);font-size:1.08rem}
+.facts{display:grid;gap:1rem}
+.fact small{display:block;color:var(--cyan);font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+.timeline{position:relative;padding-left:2rem;border-left:2px solid var(--line)}
+.timeline .card::after{content:"";position:absolute;left:calc(-2rem - 8px);top:2rem;width:14px;height:14px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 5px var(--bg),0 0 18px var(--purple)}
+.meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.tag{font-size:.82rem;padding:.25rem .7rem;border-radius:999px;border:1px solid rgba(139,92,246,.4);color:#d6c8ff;background:rgba(139,92,246,.1)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.skill .sym{width:58px;height:58px;display:grid;place-items:center;border-radius:16px;font-family:var(--mono);font-weight:800;font-size:1.25rem;margin-bottom:1.1rem;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.35);color:#fff;transition:transform .35s}
+.skill:hover .sym{transform:rotate(-8deg) scale(1.1)}
+.skill:nth-child(2) .sym{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.4)}
+.skill:nth-child(3) .sym{background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.4)}
+.skill:nth-child(4) .sym{background:rgba(236,72,153,.1);border-color:rgba(236,72,153,.4)}
+.skill h3{font-size:1.3rem;margin-bottom:.5rem}
+.skill p{color:var(--muted);font-size:.95rem}
+
+/* ========== 7. PROJECTS / JOURNEY / ACHIEVEMENTS ========== */
+.empty{text-align:center;padding:3.5rem 1.5rem;border-style:dashed}
+.empty .ico{font-size:2rem;font-family:var(--mono);color:var(--cyan);margin-bottom:.8rem}
+.empty h3{font-size:1.5rem;margin-bottom:.6rem}
+.empty p{color:var(--muted);max-width:52ch;margin-inline:auto}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
+.proj img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:1rem;background:var(--surface)}
+.proj h3{margin-bottom:.5rem}.proj p{color:var(--muted);font-size:.95rem}
+.proj .links{display:flex;gap:1rem;margin-top:1rem}
+.proj .links a{color:var(--cyan);font-weight:600}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.2rem;counter-reset:step}
+.step{counter-increment:step}
+.step::after{content:"0" counter(step);position:absolute;top:1.2rem;right:1.4rem;font-family:var(--mono);color:rgba(255,255,255,.12);font-size:1.6rem;font-weight:700}
+.step h3{font-size:1.1rem;margin-bottom:.5rem}.step p{color:var(--muted);font-size:.95rem}
+.note{color:var(--muted);font-size:.9rem;margin-top:1.4rem}
+
+/* ========== 8. CONTACT & FOOTER ========== */
+.contact{text-align:center}
+.contact .lead{margin:0 auto 2.2rem}
+.contact-box{max-width:900px;margin-inline:auto;padding:3rem 1.6rem;background:radial-gradient(120% 140% at 50% 0%,rgba(139,92,246,.16),rgba(59,130,246,.06) 55%,transparent),linear-gradient(180deg,var(--surface-2),var(--surface))}
+.email-line{margin:0 0 2rem;color:var(--muted)}
+.email-line a{color:var(--cyan);font-weight:600;word-break:break-all}
+.email-line a:hover{text-decoration:underline}
+.contact-btns{display:flex;gap:1rem;justify-content:center}
+.cbtn{flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:60px;padding:.9rem 1.2rem;border-radius:16px;text-decoration:none;font-weight:600;color:#fff;
+  background:linear-gradient(135deg,rgba(139,92,246,.35),rgba(59,130,246,.3));border:1px solid rgba(139,92,246,.45);transition:transform .3s,box-shadow .3s,background .3s,border-color .3s}
+.cbtn svg{width:22px;height:22px;flex:none}
+.cbtn:hover{transform:translateY(-4px);background:linear-gradient(135deg,var(--purple),var(--blue));border-color:transparent;box-shadow:0 16px 36px -12px rgba(99,102,241,.8)}
+footer{border-top:1px solid var(--line);padding:2.5rem 0 3rem;color:var(--muted);font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.foot strong{color:var(--text)}
+.foot ul{display:flex;flex-wrap:wrap;gap:1.1rem;list-style:none;margin:0;padding:0}
+.foot a{text-decoration:none}.foot a:hover{color:var(--text)}
+
+/* ========== 9. SCROLL REVEAL (only hidden when JS is on) ========== */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .reveal.in{opacity:1;transform:none}
+.hero-in>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero-in>*:nth-child(2){animation-delay:.1s}.hero-in>*:nth-child(3){animation-delay:.2s}
+.hero-in>*:nth-child(4){animation-delay:.3s}.hero-in>*:nth-child(5){animation-delay:.4s}.hero-in>*:nth-child(6){animation-delay:.5s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+
+/* ========== 10. RESPONSIVE ========== */
+@media (max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}.hero,.about{grid-template-columns:1fr}.code-win{max-width:520px}}
+@media (max-width:820px){
+  .burger{display:block}
+  .menu{position:absolute;top:100%;left:0;right:0;flex-direction:column;padding:.8rem 1.25rem 1.2rem;background:rgba(7,7,12,.97);border-bottom:1px solid var(--line);
+    opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s,transform .25s,visibility .25s}
+  .menu.open{opacity:1;visibility:visible;transform:none}
+  .menu a{padding:.8rem 1rem}
+}
+@media (max-width:760px){.contact-btns{flex-direction:column}.cbtn{flex:none;width:100%}}
+@media (max-width:560px){section{padding:4.5rem 0}.grid4{grid-template-columns:1fr}.scroll{display:none}}
+
+/* ========== 11. REDUCED MOTION ========== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+
+<div class="bg" aria-hidden="true">
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  <canvas id="particles"></canvas>
+</div>
+<div class="glow" id="glow" aria-hidden="true"></div>
+
+<header>
+  <nav class="wrap" aria-label="Main navigation">
+    <a class="logo" href="#home" aria-label="MSH, back to top"><span class="grad-text">MSH</span></a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<!-- ===== HOME ===== -->
+<section id="home" aria-label="Introduction">
+  <div class="wrap hero">
+    <div class="hero-in">
+      <span class="badge"><i></i> Second-year B.Tech CSE · JSPM University</span>
+      <h1>Manmath <span class="grad-text">Shivkumar Hava</span></h1>
+      <p class="headline">Computer Science Student &amp; Aspiring Software Developer</p>
+      <p class="lead">I’m a second-year B.Tech Computer Science and Engineering student at JSPM University, Pune, building my foundation in programming and problem-solving.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">Explore My Work</a>
+        <a class="btn ghost" href="#about">About Me</a>
+      </div>
+      <div class="chips" aria-label="Technical skills summary"><span class="chip">C</span><span class="chip">C++</span><span class="chip">Python</span><span class="chip">Java</span></div>
+    </div>
+    <div class="code-win reveal" aria-hidden="true">
+      <div class="bar"><i></i><i></i><i></i></div>
+<pre><span class="c">// student.profile</span>
+<span class="k">const</span> manmath = {
+  <span class="f">degree</span>:  <span class="s">"B.Tech CSE"</span>,
+  <span class="f">year</span>:    <span class="s">"Second"</span>,
+  <span class="f">college</span>: <span class="s">"JSPM University"</span>,
+  <span class="f">city</span>:    <span class="s">"Pune"</span>,
+  <span class="f">skills</span>:  [<span class="s">"C"</span>, <span class="s">"C++"</span>,
+            <span class="s">"Python"</span>, <span class="s">"Java"</span>],
+  <span class="f">status</span>:  <span class="s">"learning &amp; building"</span>
+};</pre>
+    </div>
+  </div>
+  <a class="scroll" href="#about" aria-label="Scroll to About section"></a>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap">
+    <p class="eyebrow reveal">01 / About</p>
+    <h2 class="title reveal">A little about <span class="grad-text">me</span></h2>
+    <div class="about">
+      <div class="reveal">
+        <p>Hi, I’m Manmath Shivkumar Hava, a second-year B.Tech Computer Science and Engineering student at JSPM University, Pune. I’m building my foundation in programming through C, C++, Python, and Java, and developing my understanding of software development and problem-solving.</p>
+        <p style="margin-top:1rem">I’m looking forward to growing through projects, internships, and academic opportunities.</p>
+      </div>
+      <div class="facts">
+        <div class="card fact reveal" style="--d:.1s"><small>Studying</small>B.Tech, Computer Science &amp; Engineering</div>
+        <div class="card fact reveal" style="--d:.2s"><small>Based in</small>Pune, Maharashtra, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="wrap">
+    <p class="eyebrow reveal">02 / Education</p>
+    <h2 class="title reveal">Academic <span class="grad-text">background</span></h2>
+    <div class="timeline">
+      <article class="card reveal">
+        <h3>Bachelor of Technology (B.Tech)</h3>
+        <p style="color:var(--muted);margin-top:.4rem">Computer Science and Engineering</p>
+        <p style="margin-top:.8rem">JSPM University · Pune, Maharashtra, India</p>
+        <div class="meta"><span class="tag">Currently in second year</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="wrap">
+    <p class="eyebrow reveal">03 / Technical Skills</p>
+    <h2 class="title reveal">My current <span class="grad-text">toolkit</span></h2>
+    <div class="grid4">
+      <article class="card skill reveal"><div class="sym" aria-hidden="true">C</div><h3>C</h3><p>A low-level, procedural language that teaches memory, pointers and how programs work close to the hardware.</p></article>
+      <article class="card skill reveal" style="--d:.08s"><div class="sym" aria-hidden="true">C++</div><h3>C++</h3><p>Extends C with object-oriented features and templates, widely used for systems and performance-focused software.</p></article>
+      <article class="card skill reveal" style="--d:.16s"><div class="sym" aria-hidden="true">Py</div><h3>Python</h3><p>A readable, high-level language used for scripting, automation, data work and rapid prototyping.</p></article>
+      <article class="card skill reveal" style="--d:.24s"><div class="sym" aria-hidden="true">Jv</div><h3>Java</h3><p>A general-purpose, object-oriented language that runs on the JVM, used for applications and enterprise software.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS (add real ones in the PROJECTS array in the script) ===== -->
+<section id="projects">
+  <div class="wrap">
+    <p class="eyebrow reveal">04 / Projects</p>
+    <h2 class="title reveal">Selected <span class="grad-text">work</span></h2>
+    <div class="projects" id="project-list"></div>
+    <div class="card empty reveal" id="projects-empty">
+      <div class="ico" aria-hidden="true">&lt;/&gt;</div>
+      <h3>Projects Coming Soon</h3>
+      <p>Projects will be added here as Manmath builds and completes them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEARNING JOURNEY ===== -->
+<section id="journey">
+  <div class="wrap">
+    <p class="eyebrow reveal">05 / Learning Journey</p>
+    <h2 class="title reveal">Growing as a <span class="grad-text">developer</span></h2>
+    <div class="steps">
+      <article class="card step reveal"><h3>Programming fundamentals</h3><p>Building a strong base in core programming concepts.</p></article>
+      <article class="card step reveal" style="--d:.08s"><h3>Problem-solving</h3><p>Learning techniques to break problems down and solve them.</p></article>
+      <article class="card step reveal" style="--d:.16s"><h3>Practising languages</h3><p>Ongoing practice in C, C++, Python and Java.</p></article>
+      <article class="card step reveal" style="--d:.24s"><h3>Software development</h3><p>Exploring how real software is designed and built.</p></article>
+      <article class="card step reveal" style="--d:.32s"><h3>Projects &amp; depth</h3><p>Goal: build projects and strengthen technical knowledge.</p></article>
+    </div>
+    <p class="note reveal">These are learning goals and ongoing development, not completed achievements.</p>
+  </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS (add verified items in the ACHIEVEMENTS array) ===== -->
+<section id="achievements">
+  <div class="wrap">
+    <p class="eyebrow reveal">06 / Achievements</p>
+    <h2 class="title reveal">Achievements &amp; <span class="grad-text">certifications</span></h2>
+    <div class="projects" id="ach-list"></div>
+    <div class="card empty reveal" id="ach-empty">
+      <div class="ico" aria-hidden="true">✦</div>
+      <h3>Achievements and Certifications Coming Soon</h3>
+      <p>Verified achievements and certifications will appear here once earned.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal">07 / Contact</p>
+    <h2 class="title reveal">Let’s <span class="grad-text">Connect</span></h2>
+    <div class="card contact-box reveal">
+      <p class="lead" style="margin:0 auto 1.4rem">I’m open to internships, academic opportunities and entry-level roles. Whether you have an opportunity or just want to say hello, I’d love to hear from you.</p>
+      <p class="email-line">Email: <a href="mailto:manmathhava62@gmail.com">manmathhava62@gmail.com</a></p>
+      <div class="contact-btns">
+        <a class="cbtn" href="https://wa.me/919370830521" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Chat on WhatsApp</a>
+        <a class="cbtn" href="mailto:manmathhava62@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Send Me an Email</a>
+        <a class="cbtn" href="https://www.linkedin.com/in/manmath-hava-375049342/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Connect on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><strong>Manmath Shivkumar Hava</strong><br>Student developer, learning one project at a time.</div>
+    <ul aria-label="Footer navigation">
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <ul aria-label="Contact links">
+      <li><a href="https://wa.me/919370830521" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+      <li><a href="mailto:manmathhava62@gmail.com">Email</a></li>
+      <li><a href="https://www.linkedin.com/in/manmath-hava-375049342/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul>
+    <div>© <span id="year">2026</span> Manmath Shivkumar Hava</div>
+  </div>
+</footer>
+
+<script>
+/* ============ EDIT THIS BLOCK TO UPDATE THE SITE ============ */
+// Contact links (WhatsApp, email, LinkedIn) are written directly in the HTML: search for id="contact" and the footer.
+// Add real projects here. Example (remove the // to use):
+// { title:"My Project", description:"What it does.", tech:["Python"], image:"shot.png", imageAlt:"Screenshot", demo:"https://...", repo:"https://github.com/..." }
+const PROJECTS = [];
+// Add verified items here. Example: { title:"Certificate name", issuer:"Issuer", year:"2026" }
+const ACHIEVEMENTS = [];
+/* ============================================================ */
+
+document.documentElement.classList.add("js");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (s, r=document) => r.querySelector(s);
+const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u);
+
+/* Footer year */
+$("#year").textContent = new Date().getFullYear();
+
+/* Projects */
+if (PROJECTS.length){
+  $("#projects-empty").hidden = true;
+  $("#project-list").innerHTML = PROJECTS.map((p,i) => `
+    <article class="card proj reveal" style="--d:${i*.08}s">
+      ${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.imageAlt||p.title)}" loading="lazy">` : ""}
+      <h3>${esc(p.title)}</h3><p>${esc(p.description||"")}</p>
+      <div class="meta">${(p.tech||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+      <div class="links">
+        ${safeUrl(p.demo||"") ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener noreferrer">Live demo</a>` : ""}
+        ${safeUrl(p.repo||"") ? `<a href="${esc(p.repo)}" target="_blank" rel="noopener noreferrer">GitHub</a>` : ""}
+      </div></article>`).join("");
+}
+/* Achievements */
+if (ACHIEVEMENTS.length){
+  $("#ach-empty").hidden = true;
+  $("#ach-list").innerHTML = ACHIEVEMENTS.map(a =>
+    `<article class="card reveal"><h3>${esc(a.title)}</h3><p style="color:var(--muted)">${esc(a.issuer||"")} ${esc(a.year||"")}</p></article>`).join("");
+}
+
+/* Mobile menu */
+const burger = $("#burger"), menu = $("#menu");
+const setMenu = open => { menu.classList.toggle("open", open); burger.setAttribute("aria-expanded", open); };
+burger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+menu.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { setMenu(false); burger.focus(); } });
+
+/* Scroll reveal + active nav link */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+const links = [...document.querySelectorAll(".menu a")];
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) links.forEach(a => { const on = a.getAttribute("href") === "#" + e.target.id; a.classList.toggle("active", on); on ? a.setAttribute("aria-current","true") : a.removeAttribute("aria-current"); });
+}), {rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("main section[id]").forEach(s => spy.observe(s));
+
+/* Cursor glow (desktop, fine pointer, motion allowed) */
+if (!reduce && matchMedia("(hover:hover) and (pointer:fine)").matches){
+  const g = $("#glow");
+  addEventListener("pointermove", e => { g.style.opacity = 1; g.style.transform = `translate(${e.clientX-210}px,${e.clientY-210}px)`; }, {passive:true});
+}
+
+/* Light particles */
+(function(){
+  const cv = $("#particles"), ctx = cv.getContext("2d"); if (!ctx) return;
+  let w, h, pts = [], raf;
+  const size = () => { w = cv.width = innerWidth; h = cv.height = innerHeight; pts = Array.from({length: Math.min(50, Math.round(w/28))}, () => ({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25})); draw(true); };
+  function draw(still){
+    ctx.clearRect(0,0,w,h); ctx.fillStyle = "rgba(180,190,255,.55)";
+    for (const p of pts){ if(!still){p.x=(p.x+p.vx+w)%w; p.y=(p.y+p.vy+h)%h;} ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill(); }
+    if (!still && !reduce) raf = requestAnimationFrame(() => draw(false));
+  }
+  addEventListener("resize", () => { cancelAnimationFrame(raf); size(); if(!reduce) draw(false); });
+  document.addEventListener("visibilitychange", () => { cancelAnimationFrame(raf); if(!document.hidden && !reduce) draw(false); });
+  size(); if (!reduce) draw(false);
+})();
+</script>
+</body>
+</html>
